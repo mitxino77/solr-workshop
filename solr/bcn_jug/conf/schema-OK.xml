@@ -15,8 +15,8 @@
 		<field name="store" type="location" indexed="true" stored="true" />
 		<field name="releaseDate" type="date" indexed="true" stored="true" />
 
-		<field name="text" type="text_es" indexed="true" stored="false"/>
-		<field name="text_sug" type="text_suggest" indexed="true" stored="false" />
+		<field name="text" type="text_es" indexed="true" stored="false" multiValued="true"/>
+		<field name="text_sug" type="text_suggest" indexed="true" stored="false" multiValued="true"/>
 		
 		<field name="_version_" type="long" indexed="true" stored="true"/>
 	</fields>

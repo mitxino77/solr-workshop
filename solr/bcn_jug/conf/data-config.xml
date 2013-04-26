@@ -14,6 +14,10 @@
         <entity name="book" query="select id,title,author,lang,isbn,price,weight,popularity,release_date from books">
             <field column="id" name="id" />
             <field column="title" name="title" />
+            <field column="lang" name="lang"/>
+            <field column="price" name="price"/>
+            <field column="popularity" name="popularity"/>
+            
         </entity>
     </document>
 </dataConfig>

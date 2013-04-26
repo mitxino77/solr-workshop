@@ -3,6 +3,10 @@
 	<fields>
 		<field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 		<field name="title" type="string" indexed="true" stored="true" />
+		<field name="lang" type="string" indexed="true" stored="true" />
+		<field name="price" type="float" indexed="true" stored="true" />
+		<field name="popularity" type="int" indexed="true" stored="true" default="2" />
+		
 		<!-- 
 		<field name="STRING_FIELD" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 		<field name="FLOAT_FIELD" type="float" indexed="true" stored="true" />

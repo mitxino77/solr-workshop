@@ -49,7 +49,7 @@
 
 				<section>
 					<h1>Solr</h1>
-					<h3>Introduccion y buscador de Libros</h3>
+					<h3>Introducción y buscador de Libros</h3>
 					<p>
 						<small>Created by <a href="http://ikertxef.com">Iker Mtz de Apellaniz</a> / <a href="http://twitter.com/mitxino77">@mitxino77</a></small>
 					</p>
@@ -59,7 +59,7 @@
 				</section>
 
 				<section>
-					<h2>¿Que haremos hoy?</h2>
+					<h2>¿Qué haremos hoy?</h2>
 					<ul>
 						<li>Fundamentos</li>
 						<li>Index & Schema</li>
@@ -145,7 +145,7 @@
 					<section>
 						<h2>Index & Schema</h2>
 						<br/>
-						<p class="fragment">La estructura de los datos se define mediante un schema, aunque pueden crearse campos dinamicos</p>
+						<p class="fragment">La estructura de los datos se define mediante un schema, aunque pueden crearse campos dinámicos</p>
 						<aside class="notes">
 							<ul>
 								<li>Los docs se almacenan en un indice de Lucene</li>
@@ -276,22 +276,15 @@
 					<section>
 						<h3>Dismax</h3>
 						<p>Disjunction Maximum</p>
-						<p>Permite buscar los terminos de busqueda en diferentes campos del indice</p>
+						<p>Permite buscar los términos de búsqueda en diferentes campos del índice</p>
 						<ul>
-							<li>q, q.alt, qf</li>
-							<li>pf, ps</li>
-							<li>mm</li>
-							<li>tie</li>
-							<li>bq, bf</li>
+							<li>q, q.alt, qf, pf, ps, mm, tie, bq, bf</li>
 						</ul>
+						<h3>Edismax</h3>
+						<p>Mejora la búsqueda por cercanía y permite utilizar wildcars</p>
 						<aside class="notes">
 							Disjunction refers to the fact that your search is executed across multiple fields, e.g. title, body and keywords, with different relevance weights<br/>
 						</aside>
-					</section>
-					<section>
-						<h3>Edismax</h3>
-						<p>Extended Dismax</p>
-						<p>Mejora la busqueda por cercania y permite utilizar wildcars</p>
 					</section>
 					<section>
 						<h3>Faceting</h3>
@@ -301,11 +294,11 @@
 					</section>
 					<section>
 						<h3>Collapsing Grouping</h3>
-						<p>Permite <a target="_blank" href="http://wiki.apache.org/solr/FieldCollapsing#Request_Parameters">agrupar resultados</a> o restringir el numero de resultados por un campo especifico</p>
+						<p>Permite <a target="_blank" href="http://wiki.apache.org/solr/FieldCollapsing#Request_Parameters">agrupar resultados</a> o restringir el número de resultados por un campo específico</p>
 					</section>
 					<section>
 						<h3>Boosting</h3>
-						<p>Algunos campos tienen mas importancia que otros en la busqueda, o queremos resaltar los documentos de un tipo especifico</p>
+						<p>Algunos campos tienen más importancia que otros en la búsqueda, o queremos resaltar los documentos de un tipo específico</p>
 						<code>
 							q=title:superman^2 subject:superman<br>
 							q=superman&qf=title^2 subject<br>
@@ -323,10 +316,71 @@
 					</section>
 					<section>
 						<h3>Request Handlers</h3>
-						<p>Permite abstraer al cliente de ciertas operaciones y parametros de la búsqueda</p>
+						<p>Permite abstraer al cliente de ciertas operaciones y parámetros de la búsqueda</p>
 						<p class="fragment highlight-green"><a target="_blank" href="http://localhost:8983/solr/#/bcn_jug/config">ejemplo</a></p>
 						<p class="fragment highlight-green"><a target="_blank" href="http://wiki.apache.org/solr/SolrRequestHandler">docs</a></p>	
 					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Solr Cloud</h2>
+						<a href="http://wiki.apache.org/solr/SolrCloud">http://wiki.apache.org/solr/SolrCloud</a>
+						<img src="http://people.apache.org/~markrmiller/2shard4serverFull.jpg">
+					</section>
+					<section>
+						<h3>What is this?</h3>
+						<p>A set of functions that makes it easy to scale and offer high availability</p>
+						<br/>
+						<h4 class="fragment">So what?</h4>
+						<p class="fragment">You will have a highly available, fault tolerant cluster of Solr servers.<br/>Scalabe and reliable</p>
+						<p class="fragment">No single point of failure, Transaction logged, automatic recovered</p>
+					</section>
+					<section>
+						<h3>How it works?</h3>
+						<p>Assign machine</p>
+						<img height="70%" src="http://blog.credera.com/wp-content/uploads/2012/10/solr_cloud-300x237.png">
+						<aside class="notes">
+							Collection: A single search index.<br>
+Shard:
+A logical section of a single collection (also called Slice). Sometimes people will talk about "Shard" in a physical sense (a manifestation of a logical shard)<br>
+Replica:
+A physical manifestation of a logical Shard, implemented as a single Lucene index on a SolrCore<br>
+Leader:
+One Replica of every Shard will be designated as a Leader to coordinate indexing for that Shard<br>
+SolrCore:
+Encapsulates a single physical index. One or more make up logical shards (or slices) which make up a collection.<br>
+Node:
+A single instance of Solr. A single Solr instance can have multiple SolrCores that can be part of any number of collections.<br>
+Cluster:
+All of the nodes you are using to host SolrCores.
+						</aside>
+					</section>
+					<section>
+						<h3>How it works?</h3>
+						<a href="http://lucenerevolution.org/sites/default/files/LR_logos/lucenerevolution%20solr%20cloud%20talk%5B1%5D.pdf">lucid imagination</a>
+						<a href="http://vimeo.com/43913870">video</a>
+					</section>
+					<section>
+						<h3>How it works?</h3>
+						<ul>
+							<li>transaction log</li>
+							<li>soft commits</li>
+							<li>NRT</li>
+							<li>Admin UI</li>
+						</ul>
+						<aside class="notes">
+							allows a more robust indexing, a copy of the updates is saved<br/>
+							un soft commit no cierra el segmento, es como si lo añadiera a un segmento en memoria<br/>
+							Near real time, aunque hay delais todavia, no es necesario replicar
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Alternatives</h2>
+					<p>elasticSearch</p>
+					<a href="http://solr-vs-elasticsearch.com/">vs.</a>
 				</section>
 
 				<section>
@@ -396,67 +450,6 @@
 					<section>
 						<h2>Did you mean</h2>
 					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Solr Cloud</h2>
-						<a href="http://wiki.apache.org/solr/SolrCloud">http://wiki.apache.org/solr/SolrCloud</a>
-						<img src="http://people.apache.org/~markrmiller/2shard4serverFull.jpg">
-					</section>
-					<section>
-						<h3>What is this?</h3>
-						<p>A set of functions that makes it easy to scale and offer high availability</p>
-						<br/>
-						<h4 class="fragment">So what?</h4>
-						<p class="fragment">You will have a highly available, fault tolerant cluster of Solr servers.<br/>Scalabe and reliable</p>
-						<p class="fragment">No single point of failure, Transaction logged, automatic recovered</p>
-					</section>
-					<section>
-						<h3>How it works?</h3>
-						<p>Assign machine</p>
-						<img height="70%" src="http://blog.credera.com/wp-content/uploads/2012/10/solr_cloud-300x237.png">
-						<aside class="notes">
-							Collection: A single search index.<br>
-Shard:
-A logical section of a single collection (also called Slice). Sometimes people will talk about "Shard" in a physical sense (a manifestation of a logical shard)<br>
-Replica:
-A physical manifestation of a logical Shard, implemented as a single Lucene index on a SolrCore<br>
-Leader:
-One Replica of every Shard will be designated as a Leader to coordinate indexing for that Shard<br>
-SolrCore:
-Encapsulates a single physical index. One or more make up logical shards (or slices) which make up a collection.<br>
-Node:
-A single instance of Solr. A single Solr instance can have multiple SolrCores that can be part of any number of collections.<br>
-Cluster:
-All of the nodes you are using to host SolrCores.
-						</aside>
-					</section>
-					<section>
-						<h3>How it works?</h3>
-						<a href="http://lucenerevolution.org/sites/default/files/LR_logos/lucenerevolution%20solr%20cloud%20talk%5B1%5D.pdf">lucid imagination</a>
-						<a href="http://vimeo.com/43913870">video</a>
-					</section>
-					<section>
-						<h3>How it works?</h3>
-						<ul>
-							<li>transaction log</li>
-							<li>soft commits</li>
-							<li>NRT</li>
-							<li>Admin UI</li>
-						</ul>
-						<aside class="notes">
-							allows a more robust indexing, a copy of the updates is saved<br/>
-							un soft commit no cierra el segmento, es como si lo añadiera a un segmento en memoria<br/>
-							Near real time, aunque hay delais todavia, no es necesario replicar
-						</aside>
-					</section>
-				</section>
-
-				<section>
-					<h2>Alteratives</h2>
-					<p>elasticSearch</p>
-					<a href="http://solr-vs-elasticsearch.com/">vs.</a>
 				</section>
 				
 				<section>

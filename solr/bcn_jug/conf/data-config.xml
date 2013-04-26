@@ -1,0 +1,20 @@
+<dataConfig> 
+        <dataSource type="JdbcDataSource" name="testDS" driver="com.mysql.jdbc.Driver" 
+        url="jdbc:mysql://127.0.0.1:3306/test" user="test" password="test" batchSize="-1"/>
+    
+    <!-- may need to use &zeroDateTimeBehavior=convertToNull -->
+    
+    <!-- schema for person_oriented is as follows:
+        id, gender, name, org_unit_name (recursive), org_unit_id, publication_id, publication_date, fte, 
+        supervising, phd_supervisions, journal_count, book_count,
+        chapter_count, conference_count, exhibition_performance_count (not yet implemented)
+    -->
+    
+    <document name="person_oriented" dataSource="cerif">
+        <entity name="book" query="select FIELD_ONE, FIELD_TWO from TABLE">
+            <field column="id" name="id" />
+            <field column="FIELD_ONE" name="fieldOne" />
+            <field column="FIELD_TWO" name="fieldTwo"/>
+        </entity>
+    </document>
+</dataConfig>

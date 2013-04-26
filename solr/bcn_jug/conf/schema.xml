@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema name="book" version="1.5">
 	<fields>
+		<field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+		<field name="title" type="string" indexed="true" stored="true" />
+		<!-- 
 		<field name="STRING_FIELD" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 		<field name="FLOAT_FIELD" type="float" indexed="true" stored="true" />
 		<field name="INT_FIELD" type="int" indexed="true" stored="true" default="2" />
@@ -9,12 +12,18 @@
 		<field name="DATE_FIELD" type="date" indexed="true" stored="true" />
 		<field name="ANALYZED_TEXT_FIELD" type="text_es" indexed="true" stored="false" multiValued="true" />
 		<field name="LONG_FIELD" type="long" indexed="true" stored="true"/>
+		 -->
+		 <field name="text" type="text_es" indexed="true" stored="false" multiValued="true"/>
+		 
+		 <field name="_version_" type="long" indexed="true" stored="true"/>
 	</fields>
 
 	<uniqueKey>id</uniqueKey>
 
+	<copyField source="title" dest="text" />
+	<!-- 
 	<copyField source="SOURCE_FIELD" dest="DEST_FIELD" />
-	
+	 -->
 	<types>
 
 		<!-- The StrField type is not analyzed, but indexed/stored verbatim. It 

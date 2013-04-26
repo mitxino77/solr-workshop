@@ -11,10 +11,9 @@
     -->
     
     <document name="person_oriented" dataSource="cerif">
-        <entity name="book" query="select FIELD_ONE, FIELD_TWO from TABLE">
+        <entity name="book" query="select id,title,author,lang,isbn,price,weight,popularity,release_date from books">
             <field column="id" name="id" />
-            <field column="FIELD_ONE" name="fieldOne" />
-            <field column="FIELD_TWO" name="fieldTwo"/>
+            <field column="title" name="title" />
         </entity>
     </document>
 </dataConfig>

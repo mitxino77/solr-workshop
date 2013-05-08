@@ -27,7 +27,8 @@
     <copyField source="title" dest="text_sug" />
 	<copyField source="author" dest="text_sug" />
 	
-	<copyField source="text_sug" dest="text" />
+	<copyField source="title" dest="text" />
+	<copyField source="author" dest="text" />
 	<copyField source="tag" dest="text" />
 	
 	

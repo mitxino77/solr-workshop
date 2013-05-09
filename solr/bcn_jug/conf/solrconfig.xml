@@ -346,7 +346,6 @@
   <!-- EXAMPLE DOS CON GROUPING -->
   <requestHandler name="/bcn_jug_group" class="solr.SearchHandler" enable="true">
     <lst name="defaults">
-       <str name="q">$uq</str>
        <str name="echoParams">all</str>
        <!-- assume they want 50 rows unless they tell us otherwise -->
        <int name="rows">50</int>

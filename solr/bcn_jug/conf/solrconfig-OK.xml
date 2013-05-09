@@ -323,7 +323,7 @@
   </requestHandler>
 
 <!-- EXAMPLE UNO CON FACETS Y TAL -->
-  <requestHandler name="bcn_jug_en" class="solr.SearchHandler" enable="true">
+  <requestHandler name="/bcn_jug_en" class="solr.SearchHandler" enable="true">
      <lst name="defaults">
        <str name="defType">edismax</str>
        <str name="qf">text</str>
@@ -349,13 +349,13 @@
       <bool name="facet">true</bool>
       <str name="facet.field">author</str>
       <int name="facet.mincount">1</int>
+      <str name="wt">json</str>
     </lst>
   </requestHandler>
   
   <!-- EXAMPLE DOS CON GROUPING -->
-  <requestHandler name="bcn_jug_group" class="solr.SearchHandler" enable="true">
+  <requestHandler name="/bcn_jug_group" class="solr.SearchHandler" enable="true">
     <lst name="defaults">
-       <str name="q">$uq</str>
        <str name="echoParams">all</str>
        <!-- assume they want 50 rows unless they tell us otherwise -->
        <int name="rows">50</int>

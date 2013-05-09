@@ -329,14 +329,11 @@
        <str name="qf">text</str>
        <str name="q.alt">*:*</str>
        <str name="mm">100%</str>
-       <!-- assume they want 50 rows unless they tell us otherwise -->
        <int name="rows">10</int>
-       <!-- assume they only want popular products unless they provide a different fq -->
        <str name="df">text</str>
        <str name="fl">*</str>
     </lst>
     <lst name="appends">
-      <!-- no matter what other fq are also used, always restrict to only inStock products -->
       <str name="fq">*:*</str>
     </lst>
     <lst name="invariants">

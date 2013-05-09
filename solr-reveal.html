@@ -443,10 +443,12 @@ All of the nodes you are using to host SolrCores.
 					<section>
 						<h4>Crear request Handler</h4>
 						<ul>
+							<li><a target="_blank" href="http://localhost:8983/solr/bcn_jug/bcn_jug_en?q=throne&indent=true&echoParams=all">ejemplo</a></li>
 							<li>Filtre por idioma SIEMPRE</li>
 							<li>Facet por autor SIEMPRE, rangos de precio OPCIONAL</li>
 							<li>Devuelva titulo, autor y precio</li>
 							<li>boosting por popularity?</li>
+							<li><a target="_blank" href="http://localhost:8983/solr/bcn_jug/bcn_jug_group?q=hobbit&indent=true&echoParams=all">ejemplo</a></li>
 							<li>grooping por author</li>
 						</ul>
 						<aside class="notes">
@@ -483,15 +485,20 @@ All of the nodes you are using to host SolrCores.
 						</aside>
 					</section>
 					<section>
-						<h2>More Like This</h2>
+						<h2>Did you mean</h2>
+						<a target="_blank" href="http://wiki.apache.org/solr/SpellCheckComponent#Configuration">copiar definicion de aqui</a>
+						<a target="_blank" href="http://localhost:8983/solr/bcn_jug/spell?q=thronos&indent=true&echoParams=all">test</a>
 					</section>
 					<section>
 						<h2>Suggest</h2>
+						<a target="_blank" href="http://wiki.apache.org/solr/Suggester">copiar definicion de aqui</a>
+						<a target="_blank" href="http://localhost:8983/solr/bcn_jug/suggest?q=thro&indent=true&echoParams=all">test</a>
 						<aside class="notes">Cambia el tipo de campo, para que no sugiera cosas analizadas</aside>
 					</section>
 					<section>
-						<h2>Did you mean</h2>
+						<h2>More Like This</h2>
 					</section>
+					
 				</section>
 				
 				<section>

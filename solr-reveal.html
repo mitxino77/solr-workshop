@@ -280,6 +280,7 @@
 						<ul>
 							<li>q, q.alt, qf, pf, ps, mm, tie, bq, bf</li>
 						</ul>
+						<br/>
 						<h3>Edismax</h3>
 						<p>Mejora la búsqueda por cercanía y permite utilizar wildcars</p>
 						<aside class="notes">
@@ -291,10 +292,17 @@
 						<p>Nos ayuda a generar <a target="_blank" href="http://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=game+of+thrones&rh=i%3Aaps%2Ck%3Agame+of+thrones">filtros o navigators</a> y es <a target="_blank" href="http://wiki.apache.org/solr/SimpleFacetParameters">altamente configurable</a></p>
 						<p>Field, query, range, multi-select, pivot</p>
 						<p>cache impact</p>
+						<aside class="notes">
+							Tiene un gasto muy grande<br/>
+							Como medio para analizar analytics, metricas
+						</aside>
 					</section>
 					<section>
 						<h3>Collapsing Grouping</h3>
 						<p>Permite <a target="_blank" href="http://wiki.apache.org/solr/FieldCollapsing#Request_Parameters">agrupar resultados</a> o restringir el número de resultados por un campo específico</p>
+						<aside class="notes">
+							No mostrar el mismo libro mas de 1 vez, 
+						</aside>
 					</section>
 					<section>
 						<h3>Boosting</h3>
@@ -304,7 +312,11 @@
 							q=superman&qf=title^2 subject<br>
 							q={!boost b=scale(population,1,10)) v=$uq}
 						</code>
+						<br/>
 						<a target="_blank" href="http://wiki.apache.org/solr/FunctionQuery">function queries</a>
+						<aside class="notes">
+							map, scale, penalizar una casuistica en concreto
+						</aside>
 					</section>
 					<section>
 						<h3>Debug</h3>
@@ -312,20 +324,27 @@
 						<code>
 							&debugQuery=true
 						</code>
-						<a target="_blank" href="http://wiki.apache.org/solr/FunctionQuery">function queries</a>
+						<aside class="notes">
+							ininteligible
+						</aside>
 					</section>
 					<section>
 						<h3>Request Handlers</h3>
 						<p>Permite abstraer al cliente de ciertas operaciones y parámetros de la búsqueda</p>
 						<p class="fragment highlight-green"><a target="_blank" href="http://localhost:8983/solr/#/bcn_jug/config">ejemplo</a></p>
 						<p class="fragment highlight-green"><a target="_blank" href="http://wiki.apache.org/solr/SolrRequestHandler">docs</a></p>	
+						<aside class="notes">
+							Es muy complicado y peligroso dejar toda la configuracion a cargo del cliente<br>
+							Podemos definir campos: defaults, appends, invariant<br>
+							podemos definir varios para cada zona de una web: listados, mlt, suggest, ...
+						</aside>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>Solr Cloud</h2>
-						<a href="http://wiki.apache.org/solr/SolrCloud">http://wiki.apache.org/solr/SolrCloud</a>
+						<a target="_blank" href="http://wiki.apache.org/solr/SolrCloud">http://wiki.apache.org/solr/SolrCloud</a>
 						<img src="http://people.apache.org/~markrmiller/2shard4serverFull.jpg">
 					</section>
 					<section>
@@ -358,14 +377,20 @@ All of the nodes you are using to host SolrCores.
 					</section>
 					<section>
 						<h3>How it works?</h3>
-						<a href="http://lucenerevolution.org/sites/default/files/LR_logos/lucenerevolution%20solr%20cloud%20talk%5B1%5D.pdf">lucid imagination</a>
-						<a href="http://vimeo.com/43913870">video</a>
+						<a target="_blank" href="http://lucenerevolution.org/sites/default/files/LR_logos/lucenerevolution%20solr%20cloud%20talk%5B1%5D.pdf">lucid imagination</a>
+						<a target="_blank" href="http://vimeo.com/43913870">video</a>
+						<aside class="notes">
+							Zookeper el puto amo<br/>
+							Como se distribuyen los shards<br/>
+							Como se insertan/actualizan documentos<br/>
+							Que pasa se se rompe una replica
+						</aside>
 					</section>
 					<section>
-						<h3>How it works?</h3>
+						<h3>Goodies?</h3>
 						<ul>
-							<li>transaction log</li>
-							<li>soft commits</li>
+							<li>Transaction log</li>
+							<li>Soft commits</li>
 							<li>NRT</li>
 							<li>Admin UI</li>
 						</ul>
@@ -380,7 +405,17 @@ All of the nodes you are using to host SolrCores.
 				<section>
 					<h2>Alternatives</h2>
 					<p>elasticSearch</p>
-					<a href="http://solr-vs-elasticsearch.com/">vs.</a>
+					<a target="_blank" href="http://solr-vs-elasticsearch.com/">vs.</a>
+					<aside class="notes">
+						DataImport desde Colas, Solr no tiene<br/>
+						Complex Documents: Solr es un documento plano, no anidados<br/>
+						Un schema unico<br/>
+						Collapsing, ES no tiene<br/>
+					</aside>
+				</section>
+
+				<section>
+					<img width="500px" src="http://www.desmotivar.com/img/desmotivaciones/114999_pis-stop.jpg">					
 				</section>
 
 				<section>
@@ -400,7 +435,9 @@ All of the nodes you are using to host SolrCores.
 						</ul>
 						<aside class="notes">
 							Fields en CamelCase.<br/>
+							5 minutos para las dos cosas<br/>
 							DataImport Normal, Segunda Paso con los tags<br/>
+							5 minutos para los tags<br/>
 						</aside>
 					</section>
 					<section>
@@ -413,6 +450,8 @@ All of the nodes you are using to host SolrCores.
 							<li>grooping por author</li>
 						</ul>
 						<aside class="notes">
+							10 minutos para un request_habndler<br/>
+							15 minutos corregir e iterar<br/>
 							appends, asi se pueden usar varios<br/>
 							invariants para el facet = true<br/>
 							juega con el facet, pivot<br/>
@@ -439,6 +478,9 @@ All of the nodes you are using to host SolrCores.
 						<p>
 							MLT, Suggest, HighLight, DYM, ...
 						</p>
+						<aside class="notes">
+							15 minutos corregir e iterar<br/>
+						</aside>
 					</section>
 					<section>
 						<h2>More Like This</h2>
